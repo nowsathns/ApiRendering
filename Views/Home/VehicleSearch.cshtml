@@ -1,0 +1,28 @@
+﻿@model ApiRendering.Models.RegistrationResponse
+@{
+    ViewBag.Title = "VehicleSearch";
+}
+
+<h2>VehicleSearch</h2>
+
+@if (Model == null)
+{
+    <label> Could not find the information for the given number </label>
+}
+else
+{
+    <label> Vechicle No : </label> @Model.RegNo
+    <br />
+
+    <label> Insurance No: </label> @Model.insurance.policyNumber
+
+    @Html.DisplayForModel()
+
+    @Html.DisplayFor(model => model.registrationDetail)
+    @Html.DisplayFor(model => model.insurance.policyNumber)
+    @Html.DisplayFor(model => model.insurance)
+    @Html.DisplayFor(model => model.insurance)
+    @Html.DisplayFor(model => model.hypotecationDetail)
+    @Html.DisplayFor(model => model.pucc)
+    @Html.DisplayFor(model => model.vehicle)
+}

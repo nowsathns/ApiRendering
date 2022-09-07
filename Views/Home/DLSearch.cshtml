@@ -1,0 +1,53 @@
+﻿@model ApiRendering.Models.DLAPIResponse
+@*<form>
+        <div class="form-group">
+            @Html.DisplayFor(model => model.validity.NonTransport)
+
+        </div>
+        <div class="form-group">
+            @Html.DisplayFor(model => model.validity.Transport)
+            <br />
+        </div>
+        <div class="form-group">
+            @Html.DisplayFor(model => model.details)
+            <br />
+        </div>
+        @Html.DisplayFor(model => model.validity)
+        <div class="form-group">
+            @Html.DisplayFor(model => model.details.covDetails)
+            <br />
+        </div>
+    </form>*@
+@{
+    ViewBag.Title = "Driving License Search";
+}
+
+<h2>Driving License Search</h2>
+
+<label> From : </label> @Model.validity.NonTransport.From
+<br />
+
+<label> To : </label> @Model.validity.NonTransport.To
+<br />
+
+<label> From : </label> @Model.validity.Transport.From
+<br />
+<label> To : </label> @Model.validity.Transport.To
+<br />
+
+<label> Status : </label> @Model.details.status
+<br />
+<label> Name : </label> @Model.details.name
+<br />
+
+@for (int i = 0; i < Model.details.covDetails.Count; i++)
+{
+    <label> Category : </label> @Html.DisplayFor(model => model.details.covDetails[i].COVCategory)
+    <br />
+    <label> ClassOfVehicle : </label> @Html.DisplayFor(model => model.details.covDetails[i].ClassOfVehicle)
+    <br />
+    <label> IssueDate : </label> @Html.DisplayFor(model => model.details.covDetails[i].COVIssueDate)
+    <br />
+}
+
+

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ApiRendering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    @* <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow
+        mb-3">
+        <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ApiRendering</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Vechicle
+        Search</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DLView">DL
+        Search</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+        asp-action="Privacy">Privacy</a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header> *@
+    <div class='dashboard'>
+        <div class="dashboard-nav">
+            <header>
+                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                <a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>API RENDER</span></a>
+            </header>
+            <nav class="dashboard-nav-list">
+                <a class="dashboard-nav-item" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-car"> </i> Vehicle
+                </a>
+                <a asp-area="" asp-controller="Home" asp-action="DLView" class="dashboard-nav-item active">
+                    <i class="fas  fa-id-card"></i>
+                    License Search
+                </a>
+                @* <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a> *@
+                @* <div class='dashboard-nav-dropdown'><a href="#!"
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
+                    Media </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                    href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                    class="dashboard-nav-dropdown-item">Images</a><a href="#"
+                    class="dashboard-nav-dropdown-item">Video</a></div>
+                    </div> *@
+                @* <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a> *@
+            </nav>
+        </div>
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar'>
+                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                @* <span class="center">Header</span> *@
+            </header>
+            <div class='dashboard-content'>
+                <div class='container'>
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - ApiRendering - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
