@@ -1,6 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using ApiRendering.Data;
 using ApiRendering.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -32,17 +36,40 @@ namespace ApiRendering.Services
 
         private readonly IConfiguration configuration;
 
-        public DLService(IConfiguration configuration)
+        private APIDBContext _dbContext;
+
+        public DLService(IConfiguration configuration, APIDBContext dbContext)
         {
             this.configuration = configuration;
+            this._dbContext = dbContext;
         }
 
         public DLAPIResponse GetDLInformation(string number, string dob)
         {
             DLResponse response = null;
+            LicenseDetails details = null;
+            string apiResponse;
             try
             {
-                string apiResponse = GetAPIResponse(number, dob);
+                DateTime date =
+                    DateTime
+                        .ParseExact(dob,
+                        "dd/MM/yyyy",
+                        CultureInfo.InvariantCulture);
+
+                details =
+                    _dbContext
+                        .LicenseDetails
+                        .FirstOrDefault(exp =>
+                            exp.LicenseNo == number && exp.DOB == date);
+                if(details  == null)
+                {
+                    apiResponse = GetAPIResponse(number, dob);
+                    _dbContext.LicenseDetails.Add(new LicenseDetails(){ DOB = date, ResponseJSON = apiResponse, LicenseNo = number });
+                    _dbContext.SaveChanges();
+                }
+                else{ apiResponse = details.ResponseJSON; }
+
                 response =
                     JsonConvert.DeserializeObject<DLResponse>(apiResponse);
                 return response.response;

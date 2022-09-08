@@ -50,7 +50,7 @@
                 <a class="dashboard-nav-item" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="fas fa-car"> </i> Vehicle
                 </a>
-                <a asp-area="" asp-controller="Home" asp-action="DLView" class="dashboard-nav-item active">
+                <a asp-area="" asp-controller="Home" asp-action="DLView" class="dashboard-nav-item">
                     <i class="fas  fa-id-card"></i>
                     License Search
                 </a>
@@ -69,7 +69,9 @@
         <div class='dashboard-app'>
             <header class='dashboard-toolbar'>
                 <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-                @* <span class="center">Header</span> *@
+                <div class="text-center" style="width: 100%;">
+                    <h2>@ViewData["Title"]</h2>
+                </div>
             </header>
             <div class='dashboard-content'>
                 <div class='container'>
@@ -108,6 +110,16 @@
                     $(".dashboard").toggleClass("dashboard-compact");
                 }
             });
+            var current = location.pathname;
+            $('nav > a').each(function () {
+                debugger;
+                var $this = $(this);
+                // if the current path is like this link, make it active
+                if(current == "/" && $this.attr('href') == current){$this.addClass('active');}
+                else if (current != "/" && $this.attr('href').indexOf(current) !== -1) {
+                    $this.addClass('active');
+                }
+            })
         });
     </script>
     @RenderSection("Scripts", required: false)
