@@ -8,13 +8,17 @@ namespace ApiRendering.Models
 {
     public class CovDetail
     {
-        [JsonProperty("COV Category")]
+        //   [JsonProperty("COV Category")]
+        [JsonProperty("covCategory")]
         public string COVCategory { get; set; }
+        
 
-        [JsonProperty("COV Issue Date")]
+        //[JsonProperty("COV Issue Date")]
+        [JsonProperty("covIssuedate")]
         public string COVIssueDate { get; set; }
 
-        [JsonProperty("Class Of Vehicle")]
+        //[JsonProperty("Class Of Vehicle")]
+        [JsonProperty("classOfVehicle")]
         public string ClassOfVehicle { get; set; }
     }
 
@@ -22,6 +26,14 @@ namespace ApiRendering.Models
     {
         public string status { get; set; }
         public string name { get; set; }
+
+        //new api implement
+        public string fatherOrHusbandName { get; set; }
+
+        public Addressd address { get; set; }
+
+        public string photo { get; set; }
+        public string dateOfIssue { get; set; }
         public List<CovDetail> covDetails { get; set; }
     }
 
@@ -36,6 +48,9 @@ namespace ApiRendering.Models
         public int code { get; set; }
         public Validity validity { get; set; }
         public Details details { get; set; }
+        public string Number { get; set; }
+
+        public string dob { get; set; }
     }
 
     public class DLResponse
@@ -50,11 +65,26 @@ namespace ApiRendering.Models
         public string To { get; set; }
     }
 
+    //public class Validity
+    //{
+    //    [JsonProperty("Non-Transport")]
+    //    public NonTransport NonTransport { get; set; }
+    //    public Transport Transport { get; set; }
+    //}
+
     public class Validity
     {
-        [JsonProperty("Non-Transport")]
+        [JsonProperty("nonTransport")]
         public NonTransport NonTransport { get; set; }
         public Transport Transport { get; set; }
+
+
     }
 
+    public class Addressd
+    {
+        [JsonProperty("address")]
+        public String address { get; set; }
+
+    }
 }

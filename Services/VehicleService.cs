@@ -23,6 +23,13 @@ namespace ApiRendering.Services
                 return configuration.GetValue<string>("Api:VehicleURL");
             }
         }
+        private string VehicleSearchURL
+        {
+            get
+            {
+                return configuration.GetValue<string>("Api:VehicleSearchURL");
+            }
+        }
 
         private string ApiKey
         {
@@ -52,28 +59,34 @@ namespace ApiRendering.Services
             string apiResponse;
             try
             {
-                details =
-                    _dbContext
-                        .VehicleDetails
-                        .FirstOrDefault(exp => exp.VehicleNo == number);
-                if (details == null)
-                {
+                //API or Database Logic Start
+               // details =
+               //     _dbContext
+               //         .VehicleDetails
+               //         .FirstOrDefault(exp => exp.VehicleNo == number);
+               //if (details == null)
+                    
+                //{
+                    //From API
                     apiResponse = GetAPIResponse(number);
-                    _dbContext
-                        .VehicleDetails
-                        .Add(new VehicleDetails()
-                        { ResponseJSON = apiResponse, VehicleNo = number });
-                    this._dbContext.SaveChanges();
-                }
-                else
-                {
-                    apiResponse = details.ResponseJSON;
-                }
+                //if (!string.IsNullOrEmpty(apiResponse)) { apiResponse = apiResponse.Replace("/","");  }
+                //    _dbContext
+                //        .VehicleDetails
+                //        .Add(new VehicleDetails()
+                //        { ResponseJSON = apiResponse, VehicleNo = number });
+                //    this._dbContext.SaveChanges();
+                //}
+                //else
+                //{
+                //    //From Database
+                //    apiResponse = details.ResponseJSON;
+                //}
                 response =
                     JsonConvert.DeserializeObject<ApiResponse>(apiResponse);
                 response.response.RegNo = number;
                 return response.response;
             }
+            //API or Database Logic End
             finally
             {
                 response = null;
@@ -82,24 +95,40 @@ namespace ApiRendering.Services
 
         private string GetAPIResponse(string number)
         {
+            HttpResponseMessage response = null;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("x-api-key", ApiKey);
 
-            var formContent =
-                new FormUrlEncodedContent(new []
-                    {
+            if (string.IsNullOrEmpty(VehicleSearchURL))
+            {
+                var formContent =
+                    new FormUrlEncodedContent(new[]
+                        {
                         new KeyValuePair<string, string>("vehicleNumber",
                             number)
-                    });
+                        });
 
-            //ApiURL + "vehicle-registration/basic"
-            HttpResponseMessage response =
-                client
-                    .PostAsync(VehicleURL, formContent)
-                    .GetAwaiter()
-                    .GetResult();
+                //ApiURL + "vehicle-registration/basic"
+                response =
+                    client
+                        .PostAsync(VehicleURL, formContent)
+                        .GetAwaiter()
+                        .GetResult();
+            }
+            else
+            {
+                string url = VehicleSearchURL + "?vehicleNumber=" + number;
+                response =
+                    client
+                        .GetAsync(url)
+                        .GetAwaiter()
+                        .GetResult();
+                
+            }
             response.EnsureSuccessStatusCode();
+
+
             string responseBody =
                 response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return responseBody;

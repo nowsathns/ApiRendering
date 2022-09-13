@@ -32,6 +32,7 @@ namespace ApiRendering
                     options.UseSqlServer(Configuration["ConnectionString"]));
             services.AddTransient<IDLService, DLService>();
             services.AddTransient<IVehicleService, VehicleService>();
+            services.AddTransient<IAadhaarService, AadhaarService>();
             services.AddControllersWithViews();
             //services.AddEntityFrameworkSqlServer();
         }

@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    @*new load*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
 </head>
 
 <body>
@@ -44,7 +48,8 @@
         <div class="dashboard-nav">
             <header>
                 <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-                <a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>API RENDER</span></a>
+                @*<a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>PARIVAHAN</span></a>*@
+                <a href="#" class="brand-logo"> <span>PARIVAHAN</span></a>
             </header>
             <nav class="dashboard-nav-list">
                 <a class="dashboard-nav-item" asp-area="" asp-controller="Home" asp-action="Index">
@@ -53,6 +58,10 @@
                 <a asp-area="" asp-controller="Home" asp-action="DLView" class="dashboard-nav-item">
                     <i class="fas  fa-id-card"></i>
                     License Search
+                </a>
+                 <a asp-area="" asp-controller="Home" asp-action="AadharView" class="dashboard-nav-item">
+                    <i class="fas  fa-address-card"></i>
+                    Aadhaar Validate
                 </a>
                 @* <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a> *@
                 @* <div class='dashboard-nav-dropdown'><a href="#!"
@@ -115,12 +124,24 @@
                 debugger;
                 var $this = $(this);
                 // if the current path is like this link, make it active
-                if(current == "/" && $this.attr('href') == current){$this.addClass('active');}
+                if (current == "/" && $this.attr('href') == current) { $this.addClass('active'); }
                 else if (current != "/" && $this.attr('href').indexOf(current) !== -1) {
                     $this.addClass('active');
                 }
             })
         });
+        
+        
+        //function hi() {
+        //    alert("hi")
+        //    swal({
+        //        title: "Red Alert!",
+        //        text: "I will close in 4 seconds.",
+        //        timer: 4000,
+        //        showConfirmButton: false
+        //    });
+        //  }
+    
     </script>
     @RenderSection("Scripts", required: false)
 </body>

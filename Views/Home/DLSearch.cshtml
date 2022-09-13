@@ -1,53 +1,65 @@
-﻿@model ApiRendering.Models.DLAPIResponse
-@*<form>
-        <div class="form-group">
-            @Html.DisplayFor(model => model.validity.NonTransport)
+﻿
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
-        </div>
-        <div class="form-group">
-            @Html.DisplayFor(model => model.validity.Transport)
-            <br />
-        </div>
-        <div class="form-group">
-            @Html.DisplayFor(model => model.details)
-            <br />
-        </div>
-        @Html.DisplayFor(model => model.validity)
-        <div class="form-group">
-            @Html.DisplayFor(model => model.details.covDetails)
-            <br />
-        </div>
-    </form>*@
+
+@model ApiRendering.Models.DLAPIResponse
+
 @{
     ViewBag.Title = "Driving License Search";
 }
 
-<h2>Driving License Search</h2>
-
-<label> From : </label> @Model.validity.NonTransport.From
-<br />
-
-<label> To : </label> @Model.validity.NonTransport.To
-<br />
-
-<label> From : </label> @Model.validity.Transport.From
-<br />
-<label> To : </label> @Model.validity.Transport.To
-<br />
-
-<label> Status : </label> @Model.details.status
-<br />
-<label> Name : </label> @Model.details.name
-<br />
-
-@for (int i = 0; i < Model.details.covDetails.Count; i++)
+<h2><label style="color:darkblue"><b> Driving License Search</b></label></h2>
+@if (Model == null)
 {
-    <label> Category : </label> @Html.DisplayFor(model => model.details.covDetails[i].COVCategory)
-    <br />
-    <label> ClassOfVehicle : </label> @Html.DisplayFor(model => model.details.covDetails[i].ClassOfVehicle)
-    <br />
-    <label> IssueDate : </label> @Html.DisplayFor(model => model.details.covDetails[i].COVIssueDate)
-    <br />
+    <label> Could not find the information for the given Driving License Number </label>
 }
+else
+{
+    <br />
+    <label type="button" data-toggle="collapse" data-target="#demo2"><b><u>Driving License Details</u></b></label>
+    <br />
 
+    @*<div>@ViewBag.Error</div>*@
 
+<div id="demo2" class="collapse">
+
+    <div class="text-center">
+        <img class="rounded-circle" src="@Model.details.photo" />
+    </div>
+
+    <br />
+    <label style="color:blue"><b> License Number :</b> </label> @Model.Number
+    <br />
+    <label style="color:blue"><b> DOB :</b> </label> @Model.dob
+    <br />
+    <label style="color:blue"><b> Valid From :</b> </label> @Model.validity.NonTransport.From
+    <br />
+    <label style="color:blue"><b>Valid To :</b> </label> @Model.validity.NonTransport.To
+    <br />
+    <label style="color:blue"><b> From : </b></label> @Model.validity.Transport.From
+    <br />
+    <label style="color:blue"><b> To : </b></label> @Model.validity.Transport.To
+    <br />
+    <label style="color:blue"><b>License Issue Date :</b> </label> @Model.details.dateOfIssue
+    <br />
+    <label style="color:blue"><b>Driving License Status :</b> </label> @Model.details.status
+    <br />
+    <label style="color:blue"><b>fatherOrHusbandName :</b> </label> @Model.details.fatherOrHusbandName
+    <br />
+    <label style="color:blue"><b>Address :</b> </label> @Model.details.address.address
+    <br />
+
+    <label style="color:blue"><b> Name :</b> </label> @Model.details.name
+    <br />
+    @for (int i = 0; i < Model.details.covDetails.Count; i++)
+    {
+        <label style="color:blue"><b> Category : </b></label> @Html.DisplayFor(model => model.details.covDetails[i].COVCategory)
+        <br />
+        <label style="color:blue"><b> ClassOfVehicle :</b> </label> @Html.DisplayFor(model => model.details.covDetails[i].ClassOfVehicle)
+        <br />
+        <label style="color:blue"><b> IssueDate :</b> </label> @Html.DisplayFor(model => model.details.covDetails[i].COVIssueDate)
+        <br />
+    }
+</div>
+}
