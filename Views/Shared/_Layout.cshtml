@@ -70,13 +70,13 @@
                 </a>
                 @* <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a> *@
                 @* <div class='dashboard-nav-dropdown'><a href="#!"
-        class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
-        Media </a>
-        <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
-        class="dashboard-nav-dropdown-item">Images</a><a href="#"
-        class="dashboard-nav-dropdown-item">Video</a></div>
-        </div> *@
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
+                    Media </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                    href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                    class="dashboard-nav-dropdown-item">Images</a><a href="#"
+                    class="dashboard-nav-dropdown-item">Video</a></div>
+                    </div> *@
                 @* <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a> *@
             </nav>
         </div>
@@ -103,6 +103,9 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript">
@@ -135,8 +138,8 @@
                 }
             })
         });
-        
-        
+
+
         //function hi() {
         //    alert("hi")
         //    swal({
@@ -146,7 +149,7 @@
         //        showConfirmButton: false
         //    });
         //  }
-    
+
     </script>
     @RenderSection("Scripts", required: false)
 </body>

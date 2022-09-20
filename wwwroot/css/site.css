@@ -408,6 +408,10 @@ h1,
   background-color: rgba(236, 238, 239, 0.3);
 }
 
+.field-validation-error {
+  color: red;
+}
+
 @media (min-width: 992px) {
   .dashboard-app {
     margin-left: 238px;

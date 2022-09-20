@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -140,10 +141,11 @@ namespace ApiRendering.Models
 
     public class APIInput
     {
+        [Required]
         public string vehicleNumber { get; set; }
-
+        [Required]
         public string cardNumber { get; set; }
-
+[Required]
         public string dob { get; set; }
 
         public ApiResponse Response { get; set; }

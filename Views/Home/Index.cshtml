@@ -1,30 +1,32 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 @model ApiRendering.Models.APIInput
 @{
-
     ViewData["Title"] = "Vehicle Search";
 }
+@* <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script> *@
 
-<div style="padding-top:10px;min-height:300px;">
-    <form action="~/Home/VehicleSearch" method="get">
+<div style="padding-top:10px;padding-bottom:25px;">
+    <form id="vehForm" data-ajax="true" data-ajax-url="Home/VehicleSearch" data-ajax-method="post"
+        data-ajax-update="#details">
         <b> Vehicle No</b>
         <br />
         @Html.TextBoxFor(model => model.vehicleNumber)
         <br />
         <br />
-        <button class=" btn btn-primary mt-2" onclick="hi()" type="submit">Search</button>
+        @Html.ValidationMessageFor(model=>model.vehicleNumber)
+        <br />
+        <button class=" btn btn-primary mt-2" onclick="ShowLoader();" type="submit">Search</button>
     </form>
 </div>
+<div id="details" style="display: none;">
+    Loading...
+</div>
+
 <script>
-    function hi() {
-        swal({
-            title: "Information Loading",
-            /*icon: "success",*/
-            /* timer: 6000,*/
-            showConfirmButton: false
-        });
-
-
+    function ShowLoader() {
+        $("#details").html("");
+        if ($("#vehForm").valid()) {
+            $("#details").html("Loading...");
+            $("#details").show();
+        }
     }
 </script>
