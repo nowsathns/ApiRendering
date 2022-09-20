@@ -9,11 +9,21 @@
 }
 <div style="padding-top:10px;min-height:300px;">
     <form action="~/Home/DLSearch" method="post">
-        Card Number : @Html.TextBoxFor(model => model.cardNumber) <br /><br />
-        @*Date of Birth : @Html.TextBoxFor(model => model.dob, "", new { placeholder = "dd/MM/YYYY" }) <br /><br />*@
-        <button type="submit" onclick="hi()">Search</button>
+       <b> License Number :</b>
+        <br/>
+        <br/>
+            @Html.TextBoxFor(model => model.cardNumber, new { @style = "width:18% !important"})
+            
+            <br />
+            <br />
+            <b> Date of Birth :</b>
+            <br />
+            <br />
+                @Html.EditorFor(model => model.dob, new { htmlAttributes = new { @class = "form-control ", @type = "date", @style="width:18% !important" } })
+                <br /><br />
+                <button class=" btn btn-primary mt-2" type="submit" onclick="hi()">Search</button>
 
-    </form>
+</form>
 
 </div>
 <script>
@@ -22,7 +32,7 @@
             title: "Information Loading",
             /*icon: "success",*/
             /* timer: 6000,*/
-            showConfirmButton: true
+            showConfirmButton: false
         });
 
 

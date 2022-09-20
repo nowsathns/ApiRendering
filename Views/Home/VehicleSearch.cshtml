@@ -34,48 +34,82 @@ else
     <br />
     <br />
     <div id="demo2" class="collapse">
-        <label style="color:blue"><b> Owner Name:</b> </label> @Model.owner
-        <br />
-        <label style="color:blue"> <b>OwnerFathersName:</b> </label> @Model.ownerFathersName
-        <br />
-        <label style="color:blue"> <b>Present Address: </b> </label> @Model.permanentAddress.completeAddress
-        <br />
-        <label style="color:blue"> <b>addressLine:</b> </label> @Model.permanentAddress.addressLine
-        <br />
-        <br />
+        <table class="table table-striped">
+            <tr>
+                <td scope="row"><b> Owner Name:</b></td>
+                <td> @Model.owner</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>OwnerFathersName:</b></td>
+                <td> @Model.ownerFathersName</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Present Address: </b></td>
+                <td> @(Model.permanentAddress != null ? Model.permanentAddress.completeAddress : "N/A" )</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>addressLine:</b></td>
+                <td> @(Model.permanentAddress != null ? Model.permanentAddress.addressLine : "N/A" ) </td>
+            </tr>
+
+        </table>
     </div>
     <label type="button" data-toggle="collapse" data-target="#demo1"><b><u>VEHICLE DETAILS</u></b></label>
     <br />
     <br />
     <div id="demo1" class="collapse">
-        <label style="color:blue"> <b>Vehicle RC Status:</b> </label> @Model.registrationDetail.rcStatusAsOn
-        <br />
-        <label style="color:blue"> <b>Vehicle Authority State:</b> </label> @Model.registrationDetail.authority
-        <br />
-        <label style="color:blue"><b> expiryDate: </b></label> @Model.registrationDetail.expiryDate
-        <br />
-        <label style="color:blue"><b> Vehicle Number:</b> </label> @Model.vehicle.number
-        <br />
-        <label style="color:blue"> <b>companyName: </b></label> @Model.vehicle.companyName
-        <br />
-        <label style="color:blue"> <b>Model Name:</b> </label> @Model.vehicle.modelName
-        <br />
-        <label style="color:blue"><b> Vehilce Color:</b> </label> @Model.vehicle.color
-        <br />
-        <label style="color:blue"> <b>Vehilce engine:</b> </label> @Model.vehicle.engine
-        <br />
-        <br />
+        <table class="table table-striped">
+            <tr>
+                <td scope="row"><b>Vehicle RC Status:</b></td>
+                <td>@(Model.registrationDetail != null ? Model.registrationDetail.rcStatusAsOn : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"> <b>Vehicle Authority State:</b></td>
+                <td>@(Model.registrationDetail != null ? Model.registrationDetail.authority : "N/A" )</td>
+            </tr>
+            <tr>
+                <td scope="row"><b> expiryDate: </b></td>
+                <td>@(Model.registrationDetail != null ? Model.registrationDetail.expiryDate : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"><b> Vehicle Number:</b></td>
+                <td> @(Model.vehicle !=null ? Model.vehicle.number : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"> <b>companyName: </b></td>
+                <td> @(Model.vehicle!=null ? Model.vehicle.companyName : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Model Name:</b></td>
+                <td> @(Model.vehicle!=null ? Model.vehicle.modelName : "N/A") </td>
+            </tr>
+            <tr>
+                <td scope="row"><b> Vehilce Color:</b></td>
+                <td> @(Model.vehicle!=null ?Model.vehicle.color : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Vehilce engine:</b></td>
+                <td>@(Model.vehicle != null ? Model.vehicle.engine : "N/A")</td>
+            </tr>
+        </table>
     </div>
     <label type="link" data-toggle="collapse" data-target="#demo"><b><u>VEHICLE INSURENCE DETAILS</u></b></label>
     <br />
     <br />
     <div id="demo" class="collapse">
-        <label style="color:blue"> <b>Insurance No:</b> </label> @Model.insurance.policyNumber
-        <br />
-        <label style="color:blue"> <b>Insurance company:</b> </label> @Model.insurance.company
-        <br />
-        <label style="color:blue"> <b>Insurance ValidTill:</b> </label> @Model.insurance.validTill
-        <br />
-        <br />
+        <table class="table table-striped">
+            <tr>
+                <td scope="row"><b>Insurance No:</b></td>
+                <td> @(Model.insurance !=null ? Model.insurance.policyNumber : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Insurance company:</b></td>
+                <td>@(Model.insurance !=null ? Model.insurance.company : "N/A")</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Insurance ValidTill:</b></td>
+                <td> @(Model.insurance !=null ? Model.insurance.validTill : "N/A")</td>
+            </tr>
+        </table>
     </div>
 }

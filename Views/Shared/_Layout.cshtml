@@ -46,12 +46,13 @@
         </header> *@
     <div class='dashboard'>
         <div class="dashboard-nav">
-            <header>
-                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-                @*<a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>PARIVAHAN</span></a>*@
-                <a href="#" class="brand-logo"> <span>PARIVAHAN</span></a>
-            </header>
+
             <nav class="dashboard-nav-list">
+                <header>
+                    <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    @*<a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>PARIVAHAN</span></a>*@
+                    <a href="#" class="brand-logo"> <span>PARIVAHAN</span></a>
+                </header>
                 <a class="dashboard-nav-item" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="fas fa-car"> </i> Vehicle
                 </a>
@@ -59,19 +60,23 @@
                     <i class="fas  fa-id-card"></i>
                     License Search
                 </a>
-                 <a asp-area="" asp-controller="Home" asp-action="AadharView" class="dashboard-nav-item">
+                <a asp-area="" asp-controller="Home" asp-action="AadharView" class="dashboard-nav-item">
                     <i class="fas  fa-address-card"></i>
                     Aadhaar Validate
                 </a>
+                <a asp-area="" asp-controller="Home" asp-action="AadharOfflinePView" class="dashboard-nav-item">
+                    <i class="fas  fa-address-card"></i>
+                    Aadhaar OTP Validate
+                </a>
                 @* <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a> *@
                 @* <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
-                    Media </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                    href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
-                    class="dashboard-nav-dropdown-item">Images</a><a href="#"
-                    class="dashboard-nav-dropdown-item">Video</a></div>
-                    </div> *@
+        class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
+        Media </a>
+        <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+        class="dashboard-nav-dropdown-item">Images</a><a href="#"
+        class="dashboard-nav-dropdown-item">Video</a></div>
+        </div> *@
                 @* <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a> *@
             </nav>
         </div>
