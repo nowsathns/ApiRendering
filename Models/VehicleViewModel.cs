@@ -144,6 +144,7 @@ namespace ApiRendering.Models
         [Required]
         public string vehicleNumber { get; set; }
         
+        [Required]
         public string cardNumber { get; set; }
 
         public string dob { get; set; }

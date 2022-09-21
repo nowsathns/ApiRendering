@@ -4,8 +4,6 @@
     Layout = null;
 }
 
-<h2><label style="color:darkblue"><b> Vehicle Search</b></label></h2>
-
 @if (Model == null)
 {
     <label> Could not find the information for the given number </label>
@@ -13,26 +11,26 @@
 else
 {
     <br />
-    <label type="button" data-toggle="collapse" data-target="#demo2"><b><u>VEHICLE OWNER DETAILS</u></b></label>
+     <label style="font-size:15px" type="button" data-toggle="collapse" data-target="#demo2"><b><u>VEHICLE OWNER DETAILS</u></b></label>
     <br />
     <br />
     <div id="demo2" class="collapse">
         <table class="table table-striped">
             <tr>
-                <td scope="row"><b> Owner Name:</b></td>
-                <td> @Model.owner</td>
+                <td class="w-50" style="color:blue" scope="row"><b> Owner Name:</b></td>
+                <td class="w-50" > @Model.owner</td>
             </tr>
             <tr>
-                <td scope="row"><b>OwnerFathersName:</b></td>
-                <td> @Model.ownerFathersName</td>
+                <td class="w-50" style="color:blue"  scope="row"><b>OwnerFathersName:</b></td>
+                <td class="w-50"> @Model.ownerFathersName</td>
             </tr>
             <tr>
-                <td scope="row"><b>Present Address: </b></td>
-                <td> @(Model.permanentAddress != null ? Model.permanentAddress.completeAddress : "N/A" )</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Present Address: </b></td>
+                <td class="w-50"> @(Model.permanentAddress != null ? Model.permanentAddress.completeAddress : "N/A" )</td>
             </tr>
             <tr>
-                <td scope="row"><b>addressLine:</b></td>
-                <td> @(Model.permanentAddress != null ? Model.permanentAddress.addressLine : "N/A" ) </td>
+                <td class="w-50" style="color:blue" scope="row"><b>addressLine:</b></td>
+                <td class="w-50"> @(Model.permanentAddress != null ? Model.permanentAddress.addressLine : "N/A" ) </td>
             </tr>
 
         </table>
@@ -43,36 +41,36 @@ else
     <div id="demo1" class="collapse">
         <table class="table table-striped">
             <tr>
-                <td scope="row"><b>Vehicle RC Status:</b></td>
-                <td>@(Model.registrationDetail != null ? Model.registrationDetail.rcStatusAsOn : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Vehicle RC Status:</b></td>
+                <td class="w-50">@(Model.registrationDetail != null ? Model.registrationDetail.rcStatusAsOn : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"> <b>Vehicle Authority State:</b></td>
-                <td>@(Model.registrationDetail != null ? Model.registrationDetail.authority : "N/A" )</td>
+                <td class="w-50" style="color:blue" scope="row"> <b>Vehicle Authority State:</b></td>
+                <td class="w-50">@(Model.registrationDetail != null ? Model.registrationDetail.authority : "N/A" )</td>
             </tr>
             <tr>
-                <td scope="row"><b> expiryDate: </b></td>
-                <td>@(Model.registrationDetail != null ? Model.registrationDetail.expiryDate : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b> expiryDate: </b></td>
+                <td class="w-50">@(Model.registrationDetail != null ? Model.registrationDetail.expiryDate : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"><b> Vehicle Number:</b></td>
-                <td> @(Model.vehicle !=null ? Model.vehicle.number : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b> Vehicle Number:</b></td>
+                <td class="w-50"> @(Model.vehicle !=null ? Model.vehicle.number : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"> <b>companyName: </b></td>
-                <td> @(Model.vehicle!=null ? Model.vehicle.companyName : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"> <b>companyName: </b></td>
+                <td class="w-50"> @(Model.vehicle!=null ? Model.vehicle.companyName : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"><b>Model Name:</b></td>
-                <td> @(Model.vehicle!=null ? Model.vehicle.modelName : "N/A") </td>
+                <td class="w-50" style="color:blue" scope="row"><b>Model Name:</b></td>
+                <td class="w-50"> @(Model.vehicle!=null ? Model.vehicle.modelName : "N/A") </td>
             </tr>
             <tr>
-                <td scope="row"><b> Vehilce Color:</b></td>
-                <td> @(Model.vehicle!=null ?Model.vehicle.color : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b> Vehilce Color:</b></td>
+                <td class="w-50"> @(Model.vehicle!=null ?Model.vehicle.color : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"><b>Vehilce engine:</b></td>
-                <td>@(Model.vehicle != null ? Model.vehicle.engine : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Vehilce engine:</b></td>
+                <td class="w-50">@(Model.vehicle != null ? Model.vehicle.engine : "N/A")</td>
             </tr>
         </table>
     </div>
@@ -82,17 +80,32 @@ else
     <div id="demo" class="collapse">
         <table class="table table-striped">
             <tr>
-                <td scope="row"><b>Insurance No:</b></td>
-                <td> @(Model.insurance !=null ? Model.insurance.policyNumber : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Insurance No:</b></td>
+                <td class="w-50"> @(Model.insurance !=null ? Model.insurance.policyNumber : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"><b>Insurance company:</b></td>
-                <td>@(Model.insurance !=null ? Model.insurance.company : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Insurance company:</b></td>
+                <td class="w-50">@(Model.insurance !=null ? Model.insurance.company : "N/A")</td>
             </tr>
             <tr>
-                <td scope="row"><b>Insurance ValidTill:</b></td>
-                <td> @(Model.insurance !=null ? Model.insurance.validTill : "N/A")</td>
+                <td class="w-50" style="color:blue" scope="row"><b>Insurance ValidTill:</b></td>
+                <td class="w-50"> @(Model.insurance !=null ? Model.insurance.validTill : "N/A")</td>
             </tr>
         </table>
+    </div>
+    <label type="link" data-toggle="collapse" data-target="#demo3"><b><u>POLLUTION UNDER CONTROL CERTIFICATES</u></b></label>
+    <br />
+    <br />
+    <div id="demo3" class="collapse">
+        <table class="table table-striped">
+            <tr>
+                <td class="w-50" style="color:blue" scope="row"><b>PUCC No:</b></td>
+                <td class="w-50"> @(Model.pucc !=null ? Model.pucc.number : "N/A")</td>
+            </tr>
+            <tr>
+                <td class="w-50" style="color:blue" scope="row"><b>PUCC Upto:</b></td>
+                <td class="w-50">@(Model.pucc !=null ? Model.pucc.upto : "N/A")</td>
+            </tr>
+            </table>
     </div>
 }

@@ -15,35 +15,7 @@
 </head>
 
 <body>
-    @* <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow
-        mb-3">
-        <div class="container">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ApiRendering</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Vechicle
-        Search</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DLView">DL
-        Search</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-        asp-action="Privacy">Privacy</a>
-        </li>
-        </ul>
-        </div>
-        </div>
-        </nav>
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        </header> *@
+ 
     <div class='dashboard'>
         <div class="dashboard-nav">
 
@@ -54,30 +26,21 @@
                     <a href="#" class="brand-logo"> <span>PARIVAHAN</span></a>
                 </header>
                 <a class="dashboard-nav-item" asp-area="" asp-controller="Home" asp-action="Index">
-                    <i class="fas fa-car"> </i> Vehicle
+                    <i class="fas fa-car"> </i> Vehicle Number
                 </a>
                 <a asp-area="" asp-controller="Home" asp-action="DLView" class="dashboard-nav-item">
                     <i class="fas  fa-id-card"></i>
-                    License Search
+                    Driving License Search
                 </a>
                 <a asp-area="" asp-controller="Home" asp-action="AadharView" class="dashboard-nav-item">
                     <i class="fas  fa-address-card"></i>
                     Aadhaar Validate
                 </a>
-                <a asp-area="" asp-controller="Home" asp-action="AadharOfflinePView" class="dashboard-nav-item">
+                @*<a asp-area="" asp-controller="Home" asp-action="AadharOfflinePView" class="dashboard-nav-item">
                     <i class="fas  fa-address-card"></i>
                     Aadhaar OTP Validate
-                </a>
-                @* <a href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Upload </a> *@
-                @* <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
-                    Media </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                    href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
-                    class="dashboard-nav-dropdown-item">Images</a><a href="#"
-                    class="dashboard-nav-dropdown-item">Video</a></div>
-                    </div> *@
-                @* <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a> *@
+                </a>*@
+               
             </nav>
         </div>
         <div class='dashboard-app'>
@@ -139,18 +102,7 @@
             })
         });
 
-
-        //function hi() {
-        //    alert("hi")
-        //    swal({
-        //        title: "Red Alert!",
-        //        text: "I will close in 4 seconds.",
-        //        timer: 4000,
-        //        showConfirmButton: false
-        //    });
-        //  }
-
-    </script>
+  </script>
     @RenderSection("Scripts", required: false)
 </body>
 
