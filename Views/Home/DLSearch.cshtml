@@ -6,15 +6,14 @@
 
 }
 
-<h2><label style="color:darkblue"><b> Driving License Search</b></label></h2>
+@*<h2><label style="color:darkblue"><b> Driving License Search</b></label></h2>*@
 @if (Model == null)
 {
     <label> Could not find the information for the given Driving License Number </label>
 }
 else
 {
-    <br />
-    <label   type="button" data-toggle="collapse" data-target="#demo2"><b><u>Driving License Details</u></b></label>
+    <label type="button" data-toggle="collapse" data-target="#demo2"><b><u>Driving License Details</u></b></label>
     <br />
 
     @*<div>@ViewBag.Error</div>*@
@@ -22,56 +21,101 @@ else
     <div id="demo2" class="collapse">
 
         <div class="text-center">
-            <img class="rounded-circle" src="@Model.details.photo" />
+            @*<img class="rounded-circle" src="@Model.details.photo" />*@
+            <img class="rounded-circle" src="@(Model.details != null && Model.details.photo != null ? Model.details.photo : "N/A")" />
+
         </div>
         @{
             var validity = Model.validity;
             var details = Model.details;
         }
         <br />
-        <label style="color:blue"><b> License Number :</b> </label> @Model.Number
-        <br />
-        <label style="color:blue"><b> DOB :</b> </label> @Model.dob
-        <br />
-        <label style="color:blue"><b> Valid From :</b> </label> @(validity !=null && validity.NonTransport !=null ?
-    validity.NonTransport.From : "N/A")
-        <br />
-        <label style="color:blue"><b>Valid To :</b> </label> @(validity !=null && validity.NonTransport !=null ?
-    validity.NonTransport.To : "N/A")
-        <br />
-        <label style="color:blue"><b> From : </b></label> @(validity !=null && validity.Transport !=null ?
-    validity.Transport.From : "N/A")
-        <br />
-        <label style="color:blue"><b> To : </b></label> @(validity !=null && validity.Transport !=null ?
-    validity.Transport.To : "N/A")
-        <br />
-        <label style="color:blue"><b>License Issue Date :</b> </label> @(details ! == null ? details.dateOfIssue : "N/A")
-        <br />
-        <label style="color:blue"><b>Driving License Status :</b> </label> @(details ! == null ? details.status : "N/A")
-        <br />
-        <label style="color:blue"><b>fatherOrHusbandName :</b> </label> @(details != null ? details.fatherOrHusbandName :
-    "N/A")
-        <br />
-        <label style="color:blue"><b>Address :</b> </label> @(details != null && details.address !=null?
-    Model.details.address.address : "N/A")
-        <br />
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>License Number :</b></td>
+                    <td class="w-50"> @Model.Number</td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>DOB :</b></td>
+                    <td class="w-50"> @Model.dob</td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Valid From :</b></td>
+                    <td class="w-50">
+                        @(validity !=null && validity.NonTransport !=null ?validity.NonTransport.From : "N/A")
 
-        <label style="color:blue"><b> Name :</b> </label> @details.name
-        <br />
-        @if (details.covDetails != null)
-        {
-            @for (int i = 0; i < details.covDetails.Count; i++)
-            {
-                <label style="color:blue"><b> Category : </b></label> @Html.DisplayFor(model =>
-    model.details.covDetails[i].COVCategory)
-                <br />
-                <label style="color:blue"><b> ClassOfVehicle :</b> </label> @Html.DisplayFor(model =>
-    model.details.covDetails[i].ClassOfVehicle)
-                <br />
-                <label style="color:blue"><b> IssueDate :</b> </label> @Html.DisplayFor(model =>
-    model.details.covDetails[i].COVIssueDate)
-                <br />
-            }
-        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Valid To :</b></td>
+                    <td class="w-50">
+                        @(validity !=null && validity.NonTransport !=null ? validity.NonTransport.To : "N/A")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Transport From : </b></td>
+                    <td class="w-50">
+                        @(validity !=null && validity.Transport !=null ? validity.Transport.From : "N/A")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Transport To : </b></td>
+                    <td class="w-50">
+                        @(validity !=null && validity.Transport !=null ? validity.Transport.To : "N/A")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>License Issue Date :</b></td>
+                    <td class="w-50">@(Model.details != null ? Model.details.dateOfIssue : "N/A")</td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Driving License Status :</b></td>
+                    <td class="w-50"> @(Model.details != null ? Model.details.status : "N/A")</td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Father Or HusbandName :</b></td>
+                    <td class="w-50">
+                        @(Model.details != null ? Model.details.fatherOrHusbandName : "N/A")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Address :</b></td>
+                    <td class="w-50">
+                        @(Model.details != null && Model.details.address !=null? Model.details.address.address : "N/A")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50" scope="row" style="color:blue"><b>Name :</b></td>
+                    <td class="w-50">@(details!= null ? details.name : "N/A")</td>
+                </tr>
+
+                @if (details != null && details.covDetails != null)
+                {
+                    @for (int i = 0; i < details.covDetails.Count; i++)
+                    {
+                        <tr>
+                            <td class="w-50" scope="row" style="color:blue"><b>Category : </b></td>
+                            <td class="w-50">
+                                @Html.DisplayFor(model => model.details.covDetails[i].COVCategory)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-50" scope="row" style="color:blue"><b>Class Of Vehicle :</b></td>
+                            <td class="w-50">
+                                @Html.DisplayFor(model => model.details.covDetails[i].ClassOfVehicle)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-50" scope="row" style="color:blue"><b>Issue Date :</b></td>
+                            <td class="w-50">
+                                @Html.DisplayFor(model => model.details.covDetails[i].COVIssueDate)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
     </div>
 }

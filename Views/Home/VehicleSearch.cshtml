@@ -21,7 +21,7 @@ else
                 <td class="w-50" > @Model.owner</td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue"  scope="row"><b>OwnerFathersName:</b></td>
+                <td class="w-50" style="color:blue"  scope="row"><b>Owner FathersName:</b></td>
                 <td class="w-50"> @Model.ownerFathersName</td>
             </tr>
             <tr>
@@ -29,7 +29,7 @@ else
                 <td class="w-50"> @(Model.permanentAddress != null ? Model.permanentAddress.completeAddress : "N/A" )</td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue" scope="row"><b>addressLine:</b></td>
+                <td class="w-50" style="color:blue" scope="row"><b>Address Line:</b></td>
                 <td class="w-50"> @(Model.permanentAddress != null ? Model.permanentAddress.addressLine : "N/A" ) </td>
             </tr>
 
@@ -49,7 +49,7 @@ else
                 <td class="w-50">@(Model.registrationDetail != null ? Model.registrationDetail.authority : "N/A" )</td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue" scope="row"><b> expiryDate: </b></td>
+                <td class="w-50" style="color:blue" scope="row"><b> Expiry Date: </b></td>
                 <td class="w-50">@(Model.registrationDetail != null ? Model.registrationDetail.expiryDate : "N/A")</td>
             </tr>
             <tr>
@@ -57,7 +57,7 @@ else
                 <td class="w-50"> @(Model.vehicle !=null ? Model.vehicle.number : "N/A")</td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue" scope="row"> <b>companyName: </b></td>
+                <td class="w-50" style="color:blue" scope="row"> <b>Company Name: </b></td>
                 <td class="w-50"> @(Model.vehicle!=null ? Model.vehicle.companyName : "N/A")</td>
             </tr>
             <tr>
@@ -65,11 +65,11 @@ else
                 <td class="w-50"> @(Model.vehicle!=null ? Model.vehicle.modelName : "N/A") </td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue" scope="row"><b> Vehilce Color:</b></td>
+                <td class="w-50" style="color:blue" scope="row"><b>Vehilce Color:</b></td>
                 <td class="w-50"> @(Model.vehicle!=null ?Model.vehicle.color : "N/A")</td>
             </tr>
             <tr>
-                <td class="w-50" style="color:blue" scope="row"><b>Vehilce engine:</b></td>
+                <td class="w-50" style="color:blue" scope="row"><b>Vehilce Engine:</b></td>
                 <td class="w-50">@(Model.vehicle != null ? Model.vehicle.engine : "N/A")</td>
             </tr>
         </table>

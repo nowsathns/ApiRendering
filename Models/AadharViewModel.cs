@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ApiRendering.Models
 {
     public class AadhaarResponse 
@@ -8,6 +10,7 @@ namespace ApiRendering.Models
 
     public class AadhaarInfo
     {
+       
         public string verified { get; set; }
 
         public string ageBand { get; set; }
@@ -17,7 +20,7 @@ namespace ApiRendering.Models
         public string mobileNumber { get; set; }
 
         public string state { get; set; }
-
+        [Required(ErrorMessage = "Enter Valid Aadhar Number")]
         public string aadharNumber { get; set; }
     }
 }

@@ -5,15 +5,14 @@
 @* <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script> *@
 
 <div style="padding-top:10px;padding-bottom:25px;">
-    <form id="vehForm" data-ajax="true" data-ajax-method="post" asp-controller="Home" asp-action="VehicleSearch"
+    <form id="vehForm" data-ajax="true" data-ajax-url="Home/VehicleSearch" data-ajax-method="post"
           data-ajax-update="#details">
-        <h7><label style="color:darkblue"><b> Vehicle Number Search</b></label></h7>
-        <br /><br />
-        @Html.TextBoxFor(model => model.vehicleNumber)
+        <h7><label style="color:darkblue"><b> Vehicle Number Search:</b></label></h7>
         <br />
+        @Html.TextBoxFor(model => model.vehicleNumber,new { @style = "width:30% !important", @placeholder= "Vehicle Number (Eg.UP14DM2361)" })
         <br />
         @Html.ValidationMessageFor(model => model.vehicleNumber)
-        <br />
+        <br/>
         <button class=" btn btn-primary mt-2" onclick="ShowLoader();" type="submit">Search</button>
     </form>
 </div>

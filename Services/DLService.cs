@@ -13,8 +13,7 @@ namespace ApiRendering.Services
 {
     public interface IDLService
     {
-        //DLAPIResponse GetDLInformation(string number, string dob);
-        DLAPIResponse GetDLInformation(string number);
+        DLAPIResponse GetDLInformation(string number, string dob);
     }
 
     public class DLService : IDLService
@@ -45,11 +44,10 @@ namespace ApiRendering.Services
             this._dbContext = dbContext;
         }
 
-        //        public DLAPIResponse GetDLInformation(string number, string dob)
-        public DLAPIResponse GetDLInformation(string number)
+               public DLAPIResponse GetDLInformation(string number, string dob)
         {
             DLResponse response = null;
-            LicenseDetails details = null;
+            //LicenseDetails details = null;
             string apiResponse;
             try
             {
@@ -68,11 +66,11 @@ namespace ApiRendering.Services
                 //if(details  == null)
                 //{
                 //From API new changes 
-                //apiResponse = GetAPIResponse(number, dob);
+                apiResponse = GetAPIResponse(number, dob);
                 //_dbContext.LicenseDetails.Add(new LicenseDetails(){ DOB = date, ResponseJSON = apiResponse, LicenseNo = number });
                 //_dbContext.SaveChanges();
 
-                apiResponse = GetAPIResponse(number);
+                //apiResponse = GetAPIResponse(number);
                 //_dbContext.LicenseDetails.Add(new LicenseDetails() { LicenseNo = number, ResponseJSON = apiResponse  });
                 //_dbContext.SaveChanges();
 
@@ -118,7 +116,7 @@ namespace ApiRendering.Services
         //    }
         //}
 
-        private string GetAPIResponse(string cardnumber)
+        private string GetAPIResponse(string cardnumber, string dob)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpClient client = new HttpClient();
@@ -127,10 +125,10 @@ namespace ApiRendering.Services
             var formContent =
                 new FormUrlEncodedContent(new[]
                     {
-                        new KeyValuePair<string, string>("cardNumber",
-                            cardnumber)
-                        
-                    });
+                        new KeyValuePair<string, string>("cardNumber",cardnumber),
+                        new KeyValuePair<string, string>("dob",dob)
+
+                    });;
 
             //ApiURL + "dl/shortDetail"
             HttpResponseMessage response =

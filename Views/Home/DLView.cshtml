@@ -2,37 +2,36 @@
 @{
     ViewData["Title"] = "Driving License Search";
 }
-<div style="padding-top:10px;min-height:300px;">
-    @*<form action="~/Home/DLSearch" method="post">*@
-    <form id="licForm" data-ajax="true" data-ajax-method="post" asp-controller="Home" asp-action="DLSearch"
-        data-ajax-update="#details1">
-        <b> License Number :</b>
-        <br />
-        <br />
-        @Html.TextBoxFor(model => model.cardNumber, new { @style = "width:18% !important" })
-        <br />
-        <br />
-        @Html.ValidationMessageFor(model => model.cardNumber)
-        <br /><br />
-        <b> Date of Birth :</b>
-        <br />
-        <br />
-        @Html.EditorFor(model => model.dob, new { htmlAttributes = new { @class = "form-control ", @type = "date",
-        @style = "width:18% !important" } })
-        <br /><br />
-        <button class=" btn btn-primary mt-2" onclick="ShowLoader1();" type="submit">Search</button>
+    <div style="padding-top:10px;padding-bottom:25px;">
+        @*<form action="~/Home/DLSearch" method="post">*@
+        <form id="licForm" data-ajax="true" data-ajax-method="post" asp-controller="Home" asp-action="DLSearch" data-ajax-update="#details1">
+            <b style="color:darkblue"> License Number :</b>
+            <br />
+            @Html.TextBoxFor(model => model.cardNumber, new { @style = "width:30% !important", @placeholder = "License Number (Eg.UP1620150020713)" })
+            <br />
+            @Html.ValidationMessageFor(model => model.cardNumber)
+            <br />
+            <b style="color:darkblue"> Date of Birth :</b>
+            <br />
+            @Html.TextBoxFor(model => model.dob, new { @style = "width:30% !important", @placeholder = "dd/mm/yyyy" })
+            @*@Html.EditorFor(model => model.dob, new { htmlAttributes = new { @class = "form-control ", @type = "date", @style = "width:30% !important" } })*@
+            <br />
+            @Html.ValidationMessageFor(model => model.dob)
+            <br />
+            <button class=" btn btn-primary mt-2" onclick="ShowLoader1();" type="submit">Search</button>
 
-    </form>
+        </form>
 
-</div>
-<div id="details1" style="display: none;">
-</div>
-<script>
-    function ShowLoader1() {
-        $("#details1").html("");
-        if ($("#licForm").valid()) {
-            $("#details1").html("Loading...");
-            $("#details1").show();
+    </div>
+    <div id="details1" style="display: none;">
+    </div>
+    <script>
+        $(document).ready(function () { $("#dob").datepicker(); });
+        function ShowLoader1() {
+            $("#details1").html("");
+            if ($("#licForm").valid()) {
+                $("#details1").html("Loading...");
+                $("#details1").show();
+            }
         }
-    }
-</script>
+    </script>

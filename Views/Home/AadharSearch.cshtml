@@ -1,0 +1,43 @@
+﻿@model ApiRendering.Models.AadhaarInfo
+
+@{ ViewBag.Title = "Aadhaar Search";
+    Layout = null;
+    }
+
+@if (Model == null)
+{
+    <label> Could not find the information for the given number </label>
+}
+else
+{
+    <table class="table table-striped">
+        
+            <tr>
+                <td class="w-50" scope="row" style="color:blue">
+                    <b> Aadhar Verified Status :</b>
+                </td>
+                <td class="w-50">
+                    @(Model.verified == "" ? "N/A" : Model.verified == null ? "N/A" : Model.verified )
+                </td>
+            </tr>
+            <tr>
+                <td scope="row" style="color:blue"><b> AgeBand :</b></td>
+                <td class="w-50"> @(Model.ageBand == "" ? "N/A" : Model.ageBand == null ? "N/A" : Model.ageBand )</td>
+            </tr>
+            <tr>
+                <td scope="row" style="color:blue"><b> Gender :</b></td>
+                <td class="w-50"> @(Model.gender == "" ? "N/A" : Model.gender == null ? "N/A" : Model.gender ) </td>
+            </tr>
+            <tr>
+                <td scope="row" style="color:blue"><b> Mobile Number :</b></td>
+                <td class="w-50"> @(Model.mobileNumber == "" ? "N/A" : Model.mobileNumber == null ? "N/A" : Model.mobileNumber )</td>
+
+            </tr>
+            <tr>
+                <td scope="row" style="color:blue"><b> State :</b></td>
+                <td class="w-50"> @(Model.state == "" ? "N/A" : Model.state == null ? "N/A" : Model.state )</td>
+            </tr>
+        
+    </table>
+
+}

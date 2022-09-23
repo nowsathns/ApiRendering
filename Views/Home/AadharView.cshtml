@@ -1,76 +1,28 @@
 @model ApiRendering.Models.AadhaarInfo
 
 @{ ViewBag.Title = "Aadhaar Search"; }
-<script>
-    function hi() {
-        swal({
-            title: "Information Loading",
-            /*icon: "success",*/
-            /* timer: 6000,*/
-            showConfirmButton: false
-        });
-    }
-</script>
 
-@if (Model == null)
-{
-<div style="padding-top:10px;min-height:300px;">
+<div style="padding-top:10px;padding-bottom:25px;">
     @if (string.IsNullOrEmpty(ViewBag.Error))
-    {
-    <form action="~/Home/AadharView" method="post">
-       <b> Aadhar Number :</b>
-        <br />
-        <br />
-        @Html.TextBoxFor(model => model.aadharNumber) <br /> <br />
-        <button  class=" btn btn-primary mt-2" type="submit" onclick="hi()">Search</button>
-        
-    </form> 
-    }
-else
-{
-<h2> @ViewBag.Error </h2>}
-</div> }
-else
-{
-<div class="container-md text-start bg-light">
-    <div class="col-12">
-        <form >
-            Card Number :
-            <br /><br />
-            @Html.TextBoxFor(model => model.aadharNumber) <br /><br />
-            <button class=" btn btn-primary mt-2" style="width:150px" type="submit" onclick="hi()">Search</button>
-
-            <br />
-
-            <table class="table table-striped mt-4">
-                <tbody>
-                    <tr>
-                        <td scope="row" style="color:blue">
-                            <b> Aadhar Verified Status :</b>
-                        </td>
-                        <td> @Model.verified</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="color:blue"><b> AgeBand :</b></td>
-                        <td> @Model.ageBand</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="color:blue"><b> Gender :</b></td>
-                        <td> @Model.gender</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="color:blue"><b> Mobile Number :</b></td>
-                        <td> @Model.mobileNumber</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="color:blue"><b> State :</b></td>
-                        <td> @Model.state</td>
-                    </tr>
-                </tbody>
-            </table>
-          
-         
-        </form>
+        {@*<form action="~/Home/AadharSearch" method="post">*@
+                        <form id="aadForm" data-ajax="true" data-ajax-method="post" asp-controller="Home" asp-action="AadharSearch" data-ajax-update="#details2">
+                            <b style="color:darkblue"> Aadhar Number :</b>
+                            <br />
+                            @Html.TextBoxFor(model => model.aadharNumber, new { @style = "width:30% !important", @placeholder = "Eg.421654672142" }) 
+                            <br />
+                            @Html.ValidationMessageFor(model => model.aadharNumber)
+                            <br />
+                            <button class=" btn btn-primary mt-2" type="submit" onclick="ShowLoader2()">Search</button>
+                        </form>     }
     </div>
-</div>                                                                                                                                                        @*@Html.DisplayForModel()*@
-}
+
+    <div id="details2" style="display: none;">
+    </div>
+    <script>
+        function ShowLoader2() {
+            $("#details2").html("");
+            if ($("#aadForm").valid()) {
+                $("#details2").html("Loading...");
+                $("#details2").show();
+            }
+        }</script>

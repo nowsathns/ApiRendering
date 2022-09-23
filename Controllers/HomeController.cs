@@ -89,10 +89,8 @@ namespace ApiRendering.Controllers
         {
             try
             {
-                //                var response = this.dlService.GetDLInformation(input.cardNumber,input.dob);
-                var response =
-                    this.dlService.GetDLInformation(input.cardNumber);
-                return View(response);
+                                var response = this.dlService.GetDLInformation(input.cardNumber,input.dob);
+                              return View(response);
             }
             catch (Exception e)
             {
@@ -115,7 +113,7 @@ namespace ApiRendering.Controllers
         }
 
         [HttpPost]
-        public IActionResult AadharView(AadhaarInfo aadharInfo)
+        public IActionResult AadharSearch(AadhaarInfo aadharInfo)
         {
             try
             {

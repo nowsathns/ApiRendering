@@ -141,12 +141,13 @@ namespace ApiRendering.Models
 
     public class APIInput
     {
-        [Required]
+        [Required(ErrorMessage = "Enter Valid Vehicle Number")]
         public string vehicleNumber { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Enter Valid License Number")]
         public string cardNumber { get; set; }
 
+        [Required(ErrorMessage = "Enter Valid Date Of Birth Details")]
         public string dob { get; set; }
 
         public ApiResponse Response { get; set; }
